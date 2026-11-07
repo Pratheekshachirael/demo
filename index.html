@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pratheeksha KR - Portfolio & Resume</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        pastel: {
+                            pink: '#F6CAD2',
+                            peach: '#F7D4BD',
+                            yellow: '#F9E79F',
+                            lavender: '#D9CDEB',
+                            blue: '#BBE1FA',
+                            mint: '#CCE3C4',
+                            bg: '#FAF8F5',
+                            card: '#FFFFFF',
+                            text: '#2D3748',
+                            muted: '#718096'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'Inter', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace']
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #FAF8F5;
+            color: #2D3748;
+            overflow-x: hidden;
+        }
+
+        /* Pastel Soft Glass Card Styling */
+        .pastel-card {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(226, 232, 240, 0.8);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.04), 0 8px 10px -6px rgba(0, 0, 0, 0.02);
+        }
+
+        .pastel-card-hover:hover {
+            box-shadow: 0 14px 28px -4px rgba(0, 0, 0, 0.08);
+            transform: translateY(-2px);
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #FAF8F5;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #CBD5E1;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94A3B8;
+        }
+
+        /* Subtle Pastel Aura Blobs */
+        .glow-blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(90px);
+            opacity: 0.55;
+            pointer-events: none;
+            z-index: 0;
+        }
+    </style>
+</head>
+<body class="relative min-h-screen text-slate-700 antialiased selection:bg-rose-100 selection:text-rose-900">
+
+    <!-- Ambient Pastel Blobs -->
+    <div class="glow-blob w-[450px] h-[450px] bg-[#F6CAD2] top-[-80px] left-[-80px]"></div>
+    <div class="glow-blob w-[500px] h-[500px] bg-[#BBE1FA] top-[25%] right-[-100px]"></div>
+    <div class="glow-blob w-[400px] h-[400px] bg-[#D9CDEB] bottom-[15%] left-[-60px]"></div>
+    <div class="glow-blob w-[450px] h-[450px] bg-[#F7D4BD] bottom-[-50px] right-[10%]"></div>
+
+    <!-- Top Navigation Header -->
+    <header class="sticky top-0 z-50 pastel-card border-b border-slate-200/80 bg-white/80">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <a href="#" class="flex items-center gap-2 group">
+                <div class="w-9 h-9 rounded-xl bg-[#F6CAD2] border border-rose-300 flex items-center justify-center text-slate-800 font-extrabold text-lg shadow-sm group-hover:scale-105 transition-transform">
+                    P
+                </div>
+                <span class="font-bold text-lg tracking-wider text-slate-800">PRATHEEKSHA<span class="text-rose-400">.KR</span></span>
+            </a>
+
+            <!-- Desktop Nav Links -->
+            <nav class="hidden md:flex items-center space-x-8 text-sm font-semibold text-slate-600">
+                <a href="#about" class="hover:text-rose-500 transition-colors">About</a>
+                <a href="#skills" class="hover:text-rose-500 transition-colors">Skills</a>
+                <a href="#education" class="hover:text-rose-500 transition-colors">Education</a>
+                <a href="#experience" class="hover:text-rose-500 transition-colors">Experience</a>
+                <a href="#contact" class="hover:text-rose-500 transition-colors">Contact</a>
+            </nav>
+
+            <div class="flex items-center gap-3">
+                <button onclick="copyEmail('pratheekshachirael@gmail.com')" class="hidden sm:inline-flex items-center gap-2 px-4 py-2 text-xs font-bold rounded-xl bg-[#BBE1FA] text-slate-800 hover:bg-sky-200 border border-sky-300 transition-all active:scale-95 shadow-sm">
+                    <i data-lucide="copy" class="w-3.5 h-3.5 text-slate-700"></i>
+                    <span>Copy Email</span>
+                </button>
+                <button onclick="window.print()" class="inline-flex items-center gap-2 px-4 py-2 text-xs font-bold rounded-xl bg-[#F6CAD2] text-slate-800 hover:bg-rose-200 border border-rose-300 transition-all active:scale-95 shadow-sm">
+                    <i data-lucide="download" class="w-3.5 h-3.5"></i>
+                    <span>Print / Save PDF</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-20 space-y-12">
+
+        <!-- Hero / Profile Section -->
+        <section id="about" class="pastel-card rounded-3xl p-6 sm:p-10 relative overflow-hidden transition-all duration-300">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                <!-- Avatar / Initials Graphic -->
+                <div class="lg:col-span-4 flex flex-col items-center justify-center text-center">
+                    <div class="relative group">
+                        <div class="absolute -inset-1.5 bg-gradient-to-r from-[#F6CAD2] via-[#F9E79F] to-[#BBE1FA] rounded-full blur-md opacity-80 group-hover:opacity-100 transition duration-500"></div>
+                        <div class="relative w-40 h-40 sm:w-48 sm:h-48 rounded-full bg-white border-4 border-white flex flex-col items-center justify-center p-4 shadow-md">
+                            <span class="text-5xl font-black text-slate-800 tracking-tighter">PKR</span>
+                            <span class="text-xs text-rose-500 font-bold mt-2 font-mono uppercase tracking-widest">Data Science</span>
+                        </div>
+                    </div>
+
+                    <div class="mt-6 flex flex-wrap justify-center gap-2">
+                        <span class="px-3 py-1.5 rounded-full text-xs font-bold bg-[#FAF8F5] text-slate-700 border border-slate-200 shadow-sm">
+                            <i data-lucide="map-pin" class="w-3.5 h-3.5 inline mr-1 text-rose-400"></i> Bengaluru, India
+                        </span>
+                        <span class="px-3 py-1.5 rounded-full text-xs font-bold bg-[#FAF8F5] text-slate-700 border border-slate-200 shadow-sm">
+                            <i data-lucide="graduation-cap" class="w-3.5 h-3.5 inline mr-1 text-indigo-400"></i> Christ University
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Profile Info Header -->
+                <div class="lg:col-span-8 space-y-4 text-center lg:text-left">
+                    <div>
+                        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold bg-[#CCE3C4] text-slate-800 border border-emerald-300 mb-3">
+                            <span class="w-2 h-2 rounded-full bg-emerald-600 animate-pulse"></span>
+                            Open for Opportunities: Data Science, Analytics & Software Logic
+                        </div>
+                        <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight bg-gradient-to-r from-slate-800 via-rose-500 to-indigo-600 bg-clip-text text-transparent">
+                            PRATHEEKSHA KR
+                        </h1>
+                        <p class="text-lg text-slate-700 font-semibold mt-1">
+                            BSc Data Science & Mathematics Student
+                            <span class="text-sm font-medium text-slate-500 block sm:inline">(2nd Year, 3rd Semester)</span>
+                        </p>
+                    </div>
+
+                    <p class="text-slate-600 text-sm leading-relaxed border-l-4 border-[#F6CAD2] pl-4 py-1.5 text-left bg-white/70 rounded-r-xl shadow-sm">
+                        An analytical and detail-oriented BSc Data Science and Mathematics student seeking to leverage programming, database management, and quantitative problem-solving skills in data-driven roles across forward-thinking organizations. Committed to supporting operational workflows, managing accurate data, and delivering high-quality analytical results in fast-paced environments.
+                    </p>
+
+                    <!-- Direct Quick Contact Badges -->
+                    <div class="pt-2 flex flex-wrap gap-3 justify-center lg:justify-start">
+                        <a href="mailto:pratheeksha.kr@bscdsmh.christuniversity.in" class="flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs bg-white border border-slate-200 text-slate-700 font-semibold hover:border-rose-300 hover:bg-rose-50/50 transition-all shadow-sm">
+                            <i data-lucide="mail" class="w-4 h-4 text-rose-400"></i>
+                            <span>University Mail</span>
+                        </a>
+                        <a href="mailto:pratheekshachirael@gmail.com" class="flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs bg-white border border-slate-200 text-slate-700 font-semibold hover:border-sky-300 hover:bg-sky-50/50 transition-all shadow-sm">
+                            <i data-lucide="at-sign" class="w-4 h-4 text-sky-400"></i>
+                            <span>Personal Mail</span>
+                        </a>
+                        <a href="tel:+919980613465" class="flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs bg-white border border-slate-200 text-slate-700 font-semibold hover:border-emerald-300 hover:bg-emerald-50/50 transition-all shadow-sm">
+                            <i data-lucide="phone" class="w-4 h-4 text-emerald-500"></i>
+                            <span>+91 99806 13465</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Academic & GPA Highlight Cards -->
+        <section class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <!-- GPA Card 1 -->
+            <div class="pastel-card pastel-card-hover rounded-2xl p-6 relative overflow-hidden transition-all bg-gradient-to-br from-white to-[#FAF8F5]">
+                <div class="flex items-center justify-between mb-4">
+                    <div class="w-10 h-10 rounded-xl bg-[#F9E79F] border border-amber-300 flex items-center justify-center text-slate-800 shadow-sm">
+                        <i data-lucide="award" class="w-5 h-5"></i>
+                    </div>
+                    <span class="text-xs font-mono font-semibold text-slate-600 px-2.5 py-1 rounded-lg bg-white border border-slate-200">Christ University</span>
+                </div>
+                <h3 class="text-slate-500 text-xs font-bold uppercase tracking-wider">Semester 1 GPA</h3>
+                <div class="mt-2 flex items-baseline gap-2">
+                    <span class="text-4xl font-extrabold text-slate-800">3.08</span>
+                    <span class="text-xs font-semibold text-slate-500">/ 4.00</span>
+                </div>
+                <div class="w-full bg-slate-100 h-2 rounded-full mt-4 overflow-hidden border border-slate-200">
+                    <div class="bg-[#F9E79F] h-full rounded-full" style="width: 77%;"></div>
+                </div>
+            </div>
+
+            <!-- GPA Card 2 -->
+            <div class="pastel-card pastel-card-hover rounded-2xl p-6 relative overflow-hidden transition-all bg-gradient-to-br from-white to-[#FAF8F5]">
+                <div class="flex items-center justify-between mb-4">
+                    <div class="w-10 h-10 rounded-xl bg-[#CCE3C4] border border-emerald-300 flex items-center justify-center text-slate-800 shadow-sm">
+                        <i data-lucide="trending-up" class="w-5 h-5"></i>
+                    </div>
+                    <span class="text-xs font-mono font-semibold text-slate-600 px-2.5 py-1 rounded-lg bg-white border border-slate-200">Semester 2</span>
+                </div>
+                <h3 class="text-slate-500 text-xs font-bold uppercase tracking-wider">Semester 2 GPA</h3>
+                <div class="mt-2 flex items-baseline gap-2">
+                    <span class="text-4xl font-extrabold text-slate-800">3.24</span>
+                    <span class="text-xs font-semibold text-slate-500">/ 4.00</span>
+                    <span class="text-xs font-bold text-emerald-600 ml-auto bg-emerald-50 px-2 py-0.5 rounded-md border border-emerald-200"><i data-lucide="arrow-up-right" class="w-3 h-3 inline"></i> +0.16</span>
+                </div>
+                <div class="w-full bg-slate-100 h-2 rounded-full mt-4 overflow-hidden border border-slate-200">
+                    <div class="bg-[#CCE3C4] h-full rounded-full" style="width: 81%;"></div>
+                </div>
+            </div>
+
+            <!-- Status Card -->
+            <div class="pastel-card pastel-card-hover rounded-2xl p-6 relative overflow-hidden transition-all bg-gradient-to-br from-white to-[#FAF8F5]">
+                <div class="flex items-center justify-between mb-4">
+                    <div class="w-10 h-10 rounded-xl bg-[#D9CDEB] border border-indigo-200 flex items-center justify-center text-slate-800 shadow-sm">
+                        <i data-lucide="check-circle-2" class="w-5 h-5"></i>
+                    </div>
+                    <span class="text-xs font-mono font-semibold text-slate-600 px-2.5 py-1 rounded-lg bg-white border border-slate-200">Academic Standing</span>
+                </div>
+                <h3 class="text-slate-500 text-xs font-bold uppercase tracking-wider">Backlog Status</h3>
+                <div class="mt-2 flex items-baseline justify-between">
+                    <span class="text-2xl font-extrabold text-slate-800">0 Backlogs</span>
+                    <span class="px-3 py-1 text-xs font-bold bg-[#D9CDEB] text-slate-800 rounded-full border border-indigo-200">100% Clear</span>
+                </div>
+                <p class="text-xs text-slate-500 font-medium mt-4 flex items-center gap-1.5">
+                    <i data-lucide="shield-check" class="w-4 h-4 text-indigo-500"></i> Excellent academic compliance & rigor
+                </p>
+            </div>
+        </section>
+
+        <!-- Technical Skills Interactive Matrix -->
+        <section id="skills" class="space-y-6">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-200 pb-4">
+                <div>
+                    <h2 class="text-2xl font-bold text-slate-800 flex items-center gap-2">
+                        <i data-lucide="code" class="text-rose-400"></i> Skills & Technical Competencies
+                    </h2>
+                    <p class="text-xs text-slate-500 font-medium mt-1">Interactive breakdown of technical toolkit and core competencies</p>
+                </div>
+                <!-- Filter Tabs -->
+                <div class="flex flex-wrap gap-2" id="skill-filters">
+                    <button onclick="filterSkills('all')" class="skill-tab active px-3.5 py-1.5 text-xs font-bold rounded-xl bg-[#F6CAD2] text-slate-800 border border-rose-300 transition-all shadow-sm">All</button>
+                    <button onclick="filterSkills('programming')" class="skill-tab px-3.5 py-1.5 text-xs font-bold rounded-xl bg-white text-slate-600 border border-slate-200 hover:bg-slate-50 transition-all shadow-sm">Languages</button>
+                    <button onclick="filterSkills('databases')" class="skill-tab px-3.5 py-1.5 text-xs font-bold rounded-xl bg-white text-slate-600 border border-slate-200 hover:bg-slate-50 transition-all shadow-sm">Data & Web</button>
+                    <button onclick="filterSkills('core')" class="skill-tab px-3.5 py-1.5 text-xs font-bold rounded-xl bg-white text-slate-600 border border-slate-200 hover:bg-slate-50 transition-all shadow-sm">Competencies</button>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5" id="skills-grid">
+                <!-- Skill 1: Python -->
+                <div class="skill-card pastel-card rounded-2xl p-5 border border-slate-200/80 hover:border-rose-300 transition-all group" data-category="programming">
+                    <div class="flex items-center justify-between mb-3">
+                        <div class="w-10 h-10 rounded-xl bg-[#F6CAD2] border border-rose-300 flex items-center justify-center text-slate-800 group-hover:scale-105 transition-transform shadow-sm">
+                            <i class="fa-brands fa-python text-xl"></i>
+                        </div>
+                        <span class="text-[10px] font-mono font-bold px-2.5 py-0.5 rounded-full bg-rose-50 text-rose-700 border border-rose-200">Core</span>
+                    </div>
+                    <h4 class="font-bold text-slate-800 text-base">Python</h4>
+                    <p class="text-xs text-slate-500 mt-1">Data manipulation, logic design, analytical computations.</p>
+                </div>
+
+                <!-- Skill 2: C++ -->
+                <div class="skill-card pastel-card rounded-2xl p-5 border border-slate-200/80 hover:border-amber-300 transition-all group" data-category="programming">
+                    <div class="flex items-center justify-between mb-3">
+                        <div class="w-10 h-10 rounded-xl bg-[#F9E79F] border border-amber-300 flex items-center justify-center text-slate-800 group-hover:scale-105 transition-transform shadow-sm">
+                            <span class="font-extrabold text-sm font-mono">C++</span>
+                        </div>
+                        <span class="text-[10px] font-mono font-bold px-2.5 py-0.5 rounded-full bg-amber-50 text-amber-800 border border-amber-200">Foundation</span>
+                    </div>
+                    <h4 class="font-bold text-slate-800 text-base">C++</h4>
+                    <p class="text-xs text-slate-500 mt-1">Early software engineering principles, structural logic.</p>
+                </div>
+
+                <!-- Skill 3: Java -->
+                <div class="skill-card pastel-card rounded-2xl p-5 border border-slate-200/80 hover:border-indigo-300 transition-all group" data-category="programming">
+                    <div class="flex items-center justify-between mb-3">
+                        <div class="w-10 h-10 rounded-xl bg-[#D9CDEB] border border-indigo-200 flex items-center justify-center text-slate-800 group-hover:scale-105 transition-transform shadow-sm">
+                            <i class="fa-brands fa-java text-xl"></i>
+                        </div>
+                        <span class="text-[10px] font-mono font-bold px-2.5 py-0.5 rounded-full bg-indigo-50 text-indigo-700 border border-indigo-200">OOP</span>
+                    </div>
+                    <h4 class="font-bold text-slate-800 text-base">Java</h4>
+                    <p class="text-xs text-slate-500 mt-1">Object-oriented programming concepts & algorithms.</p>
+                </div>
+
+                <!-- Skill 4: SQL -->
+                <div class="skill-card pastel-card rounded-2xl p-5 border border-slate-200/80 hover:border-sky-300 transition-all group" data-category="databases">
+                    <div class="flex items-center justify-between mb-3">
+                        <div class="w-10 h-10 rounded-xl bg-[#BBE1FA] border border-sky-300 flex items-center justify-center text-slate-800 group-hover:scale-105 transition-transform shadow-sm">
+                            <i data-lucide="database" class="w-5 h-5"></i>
+                        </div>
+                        <span class="text-[10px] font-mono font-bold px-2.5 py-0.5 rounded-full bg-sky-50 text-sky-800 border border-sky-200">Database</span>
+                    </div>
+                    <h4 class="font-bold text-slate-800 text-base">SQL & Data Struct.</h4>
+                    <p class="text-xs text-slate-500 mt-1">Relational database management, structural queries, data models.</p>
+                </div>
+
+                <!-- Skill 5: Web Tech -->
+                <div class="skill-card pastel-card rounded-2xl p-5 border border-slate-200/80 hover:border-emerald-300 transition-all group" data-category="databases">
+                    <div class="flex items-center justify-between mb-3">
+                        <div class="w-10 h-10 rounded-xl bg-[#CCE3C4] border border-emerald-300 flex items-center justify-center text-slate-800 group-hover:scale-105 transition-transform shadow-sm">
+                            <i data-lucide="layout" class="w-5 h-5"></i>
+                        </div>
+                        <span class="text-[10px] font-mono font-bold px-2.5 py-0.5 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200">Frontend</span>
+                    </div>
+                    <h4 class="font-bold text-slate-800 text-base">Web Designing</h4>
+                    <p class="text-xs text-slate-500 mt-1">HTML/CSS fundamentals, UI layout structure, responsive web styling.</p>
+                </div>
+
+                <!-- Skill 6: Data Analysis -->
+                <div class="skill-card pastel-card rounded-2xl p-5 border border-slate-200/80 hover:border-orange-300 transition-all group" data-category="core">
+                    <div class="flex items-center justify-between mb-3">
+                        <div class="w-10 h-10 rounded-xl bg-[#F7D4BD] border border-orange-200 flex items-center justify-center text-slate-800 group-hover:scale-105 transition-transform shadow-sm">
+                            <i data-lucide="bar-chart-3" class="w-5 h-5"></i>
+                        </div>
+                        <span class="text-[10px] font-mono font-bold px-2.5 py-0.5 rounded-full bg-orange-50 text-orange-800 border border-orange-200">Analytics</span>
+                    </div>
+                    <h4 class="font-bold text-slate-800 text-base">Data Analysis</h4>
+                    <p class="text-xs text-slate-500 mt-1">Quantitative insight extraction, mathematical problem solving.</p>
+                </div>
+
+                <!-- Skill 7: Process Optimization -->
+                <div class="skill-card pastel-card rounded-2xl p-5 border border-slate-200/80 hover:border-rose-300 transition-all group" data-category="core">
+                    <div class="flex items-center justify-between mb-3">
+                        <div class="w-10 h-10 rounded-xl bg-[#F6CAD2] border border-rose-300 flex items-center justify-center text-slate-800 group-hover:scale-105 transition-transform shadow-sm">
+                            <i data-lucide="zap" class="w-5 h-5"></i>
+                        </div>
+                        <span class="text-[10px] font-mono font-bold px-2.5 py-0.5 rounded-full bg-rose-50 text-rose-700 border border-rose-200">Workflow</span>
+                    </div>
+                    <h4 class="font-bold text-slate-800 text-base">Process Optimization</h4>
+                    <p class="text-xs text-slate-500 mt-1">Streamlining workflows, maintaining high data accuracy under pace.</p>
+                </div>
+
+                <!-- Skill 8: Time Management -->
+                <div class="skill-card pastel-card rounded-2xl p-5 border border-slate-200/80 hover:border-indigo-300 transition-all group" data-category="core">
+                    <div class="flex items-center justify-between mb-3">
+                        <div class="w-10 h-10 rounded-xl bg-[#D9CDEB] border border-indigo-200 flex items-center justify-center text-slate-800 group-hover:scale-105 transition-transform shadow-sm">
+                            <i data-lucide="clock" class="w-5 h-5"></i>
+                        </div>
+                        <span class="text-[10px] font-mono font-bold px-2.5 py-0.5 rounded-full bg-indigo-50 text-indigo-700 border border-indigo-200">Soft Skill</span>
+                    </div>
+                    <h4 class="font-bold text-slate-800 text-base">Time Management</h4>
+                    <p class="text-xs text-slate-500 mt-1">Prioritizing operational tasks, rapid adaptability & learning.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Academic Experience & Coursework Section -->
+        <section id="experience" class="pastel-card rounded-3xl p-6 sm:p-8 space-y-6">
+            <div class="border-b border-slate-200 pb-4 flex items-center justify-between">
+                <div>
+                    <h2 class="text-2xl font-bold text-slate-800 flex items-center gap-2">
+                        <i data-lucide="book-open" class="text-sky-400"></i> Academic Experience
+                    </h2>
+                    <p class="text-xs text-slate-500 font-medium mt-1">Undergraduate Coursework & Technical Training</p>
+                </div>
+                <span class="hidden sm:inline-flex px-3.5 py-1 rounded-full text-xs font-mono font-bold bg-[#BBE1FA] text-slate-800 border border-sky-300">Hands-on Foundations</span>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Coursework Item 1 -->
+                <div class="bg-white p-5 rounded-2xl border-l-4 border-l-[#F6CAD2] border border-slate-200/80 hover:shadow-md transition-all">
+                    <div class="flex items-center gap-3 mb-2">
+                        <div class="p-2 rounded-xl bg-[#F6CAD2] text-slate-800 border border-rose-300 shadow-sm">
+                            <i data-lucide="terminal" class="w-5 h-5"></i>
+                        </div>
+                        <h3 class="font-bold text-slate-800 text-base">Programming & Logic</h3>
+                    </div>
+                    <p class="text-xs text-slate-600 leading-relaxed">
+                        Developed core programming logic and robust data manipulation skills using <strong class="text-rose-600 font-semibold">Python</strong>. Focused on algorithmic efficiency and problem-solving techniques.
+                    </p>
+                </div>
+
+                <!-- Coursework Item 2 -->
+                <div class="bg-white p-5 rounded-2xl border-l-4 border-l-[#BBE1FA] border border-slate-200/80 hover:shadow-md transition-all">
+                    <div class="flex items-center gap-3 mb-2">
+                        <div class="p-2 rounded-xl bg-[#BBE1FA] text-slate-800 border border-sky-300 shadow-sm">
+                            <i data-lucide="database" class="w-5 h-5"></i>
+                        </div>
+                        <h3 class="font-bold text-slate-800 text-base">Database Management</h3>
+                    </div>
+                    <p class="text-xs text-slate-600 leading-relaxed">
+                        Built a solid foundation in <strong class="text-sky-700 font-semibold">SQL</strong>, focusing on relational database architecture, table normalization, and complex structured queries.
+                    </p>
+                </div>
+
+                <!-- Coursework Item 3 -->
+                <div class="bg-white p-5 rounded-2xl border-l-4 border-l-[#D9CDEB] border border-slate-200/80 hover:shadow-md transition-all">
+                    <div class="flex items-center gap-3 mb-2">
+                        <div class="p-2 rounded-xl bg-[#D9CDEB] text-slate-800 border border-indigo-200 shadow-sm">
+                            <i data-lucide="layout-template" class="w-5 h-5"></i>
+                        </div>
+                        <h3 class="font-bold text-slate-800 text-base">Web Design</h3>
+                    </div>
+                    <p class="text-xs text-slate-600 leading-relaxed">
+                        Gained structured academic exposure to building responsive user interfaces, structured HTML document hierarchies, and custom CSS styling for web applications.
+                    </p>
+                </div>
+
+                <!-- Coursework Item 4 -->
+                <div class="bg-white p-5 rounded-2xl border-l-4 border-l-[#CCE3C4] border border-slate-200/80 hover:shadow-md transition-all">
+                    <div class="flex items-center gap-3 mb-2">
+                        <div class="p-2 rounded-xl bg-[#CCE3C4] text-slate-800 border border-emerald-300 shadow-sm">
+                            <i data-lucide="layers" class="w-5 h-5"></i>
+                        </div>
+                        <h3 class="font-bold text-slate-800 text-base">Early Technical Foundation</h3>
+                    </div>
+                    <p class="text-xs text-slate-600 leading-relaxed">
+                        Formed strong roots in software development early by studying <strong class="text-emerald-700 font-semibold">C++ and SQL</strong> during 11th and 12th grades (Pre-University Education).
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Education Timeline & Key Strengths Grid -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+
+            <!-- Education Section -->
+            <section id="education" class="lg:col-span-7 pastel-card rounded-3xl p-6 sm:p-8 space-y-6">
+                <div class="border-b border-slate-200 pb-4">
+                    <h2 class="text-2xl font-bold text-slate-800 flex items-center gap-2">
+                        <i data-lucide="graduation-cap" class="text-indigo-400"></i> Education History
+                    </h2>
+                    <p class="text-xs text-slate-500 font-medium mt-1">Academic trajectory & achievement milestones</p>
+                </div>
+
+                <div class="relative pl-6 border-l-2 border-slate-200 space-y-8">
+                    <!-- Education 1 -->
+                    <div class="relative group">
+                        <!-- Dot -->
+                        <div class="absolute -left-[31px] top-1.5 w-4 h-4 rounded-full bg-white border-4 border-rose-400 group-hover:scale-125 transition-transform shadow-sm"></div>
+
+                        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
+                            <h3 class="font-extrabold text-slate-800 text-lg">Christ (Deemed to be University)</h3>
+                            <span class="text-xs font-mono font-bold px-2.5 py-1 rounded-full bg-[#F6CAD2] text-slate-800 border border-rose-300">Present (2nd Year)</span>
+                        </div>
+                        <p class="text-sm font-semibold text-rose-500 mt-0.5">BSc Data Science and Mathematics</p>
+                        <p class="text-xs text-slate-500 font-medium mt-1">Bengaluru, Karnataka, India</p>
+
+                        <div class="mt-3 grid grid-cols-2 gap-3 max-w-sm">
+                            <div class="bg-white p-3 rounded-xl border border-slate-200 shadow-sm">
+                                <span class="text-[10px] text-slate-400 uppercase font-bold tracking-wider block">Semester 1</span>
+                                <span class="font-extrabold text-slate-800 text-sm">GPA: 3.08 / 4.00</span>
+                            </div>
+                            <div class="bg-white p-3 rounded-xl border border-slate-200 shadow-sm">
+                                <span class="text-[10px] text-slate-400 uppercase font-bold tracking-wider block">Semester 2</span>
+                                <span class="font-extrabold text-slate-800 text-sm">GPA: 3.24 / 4.00</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Education 2 -->
+                    <div class="relative group">
+                        <!-- Dot -->
+                        <div class="absolute -left-[31px] top-1.5 w-4 h-4 rounded-full bg-white border-4 border-slate-400 group-hover:border-slate-600 group-hover:scale-125 transition-transform shadow-sm"></div>
+
+                        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
+                            <h3 class="font-bold text-slate-800 text-base">Pre-University / High School</h3>
+                            <span class="text-xs font-mono font-medium text-slate-500">Class 10 & 12</span>
+                        </div>
+                        <p class="text-xs text-slate-600 mt-1">Strong quantitative background & early computer science focus.</p>
+
+                        <div class="mt-3 grid grid-cols-2 gap-3 max-w-sm">
+                            <div class="bg-white p-3 rounded-xl border border-slate-200 shadow-sm">
+                                <span class="text-[10px] text-slate-400 uppercase font-bold tracking-wider block">Class 12 Aggregate</span>
+                                <span class="font-extrabold text-rose-500 text-base">86.66%</span>
+                            </div>
+                            <div class="bg-white p-3 rounded-xl border border-slate-200 shadow-sm">
+                                <span class="text-[10px] text-slate-400 uppercase font-bold tracking-wider block">Class 10 Aggregate</span>
+                                <span class="font-extrabold text-slate-700 text-base">80.00%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Key Strengths & Qualities -->
+            <section class="lg:col-span-5 pastel-card rounded-3xl p-6 sm:p-8 space-y-6 flex flex-col justify-between">
+                <div>
+                    <div class="border-b border-slate-200 pb-4 mb-6">
+                        <h2 class="text-2xl font-bold text-slate-800 flex items-center gap-2">
+                            <i data-lucide="sparkles" class="text-amber-400"></i> Core Strengths
+                        </h2>
+                        <p class="text-xs text-slate-500 font-medium mt-1">Distinct personal attributes & problem-solving approach</p>
+                    </div>
+
+                    <div class="space-y-4">
+                        <!-- Strength 1 -->
+                        <div class="p-4 rounded-2xl bg-white border border-slate-200/80 hover:border-amber-300 transition-all shadow-sm">
+                            <div class="flex items-center gap-3 mb-2">
+                                <div class="w-8 h-8 rounded-lg bg-[#F9E79F] border border-amber-300 flex items-center justify-center text-slate-800 shadow-sm">
+                                    <i data-lucide="brain-circuit" class="w-4 h-4"></i>
+                                </div>
+                                <h3 class="font-bold text-slate-800 text-sm">Analytical Thinking</h3>
+                            </div>
+                            <p class="text-xs text-slate-600 leading-relaxed">
+                                Strong mathematical foundation to solve complex problems systematically, analyze structured data sets, and derive accurate analytical conclusions.
+                            </p>
+                        </div>
+
+                        <!-- Strength 2 -->
+                        <div class="p-4 rounded-2xl bg-white border border-slate-200/80 hover:border-indigo-300 transition-all shadow-sm">
+                            <div class="flex items-center gap-3 mb-2">
+                                <div class="w-8 h-8 rounded-lg bg-[#D9CDEB] border border-indigo-200 flex items-center justify-center text-slate-800 shadow-sm">
+                                    <i data-lucide="rocket" class="w-4 h-4"></i>
+                                </div>
+                                <h3 class="font-bold text-slate-800 text-sm">Quick Learner</h3>
+                            </div>
+                            <p class="text-xs text-slate-600 leading-relaxed">
+                                Highly adaptable and capable of mastering new technical tools, operational frameworks, and software workflows rapidly under fast-paced demands.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mini Target Role Callout -->
+                <div class="mt-6 p-4 rounded-2xl bg-[#F7D4BD]/60 border border-orange-200/80 shadow-sm">
+                    <div class="flex items-center gap-2 text-slate-800 text-xs font-bold uppercase tracking-wider mb-1">
+                        <i data-lucide="target" class="w-4 h-4 text-orange-500"></i> Professional Objective
+                    </div>
+                    <p class="text-xs text-slate-700 font-medium leading-relaxed">
+                        Targeting impactful roles in <span class="text-slate-900 font-bold">Data Analysis, Quantitative Research, Software Logic, & Data Engineering</span> across global tech and financial enterprises.
+                    </p>
+                </div>
+            </section>
+        </div>
+
+        <!-- Contact & Interactive Footer Section -->
+        <section id="contact" class="pastel-card rounded-3xl p-6 sm:p-10 relative overflow-hidden">
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+                <div class="md:col-span-7 space-y-4">
+                    <h2 class="text-3xl font-extrabold text-slate-800 tracking-tight">Let's Connect & Work Together</h2>
+                    <p class="text-slate-600 text-sm max-w-lg">
+                        Open to internship opportunities, collaborative projects, and quantitative operational roles. Feel free to reach out directly through email or phone.
+                    </p>
+
+                    <div class="pt-2 space-y-3">
+                        <div class="flex items-center gap-3 text-slate-700 text-xs sm:text-sm">
+                            <div class="w-8 h-8 rounded-xl bg-[#F6CAD2] border border-rose-300 flex items-center justify-center text-slate-800 shrink-0 shadow-sm">
+                                <i data-lucide="mail" class="w-4 h-4"></i>
+                            </div>
+                            <div>
+                                <span class="text-slate-400 text-[10px] font-bold block font-mono">CHRIST UNIVERSITY MAIL</span>
+                                <a href="mailto:pratheeksha.kr@bscdsmh.christuniversity.in" class="hover:text-rose-500 transition-colors font-semibold">pratheeksha.kr@bscdsmh.christuniversity.in</a>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center gap-3 text-slate-700 text-xs sm:text-sm">
+                            <div class="w-8 h-8 rounded-xl bg-[#BBE1FA] border border-sky-300 flex items-center justify-center text-slate-800 shrink-0 shadow-sm">
+                                <i data-lucide="at-sign" class="w-4 h-4"></i>
+                            </div>
+                            <div>
+                                <span class="text-slate-400 text-[10px] font-bold block font-mono">PERSONAL EMAIL</span>
+                                <a href="mailto:pratheekshachirael@gmail.com" class="hover:text-sky-600 transition-colors font-semibold">pratheekshachirael@gmail.com</a>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center gap-3 text-slate-700 text-xs sm:text-sm">
+                            <div class="w-8 h-8 rounded-xl bg-[#CCE3C4] border border-emerald-300 flex items-center justify-center text-slate-800 shrink-0 shadow-sm">
+                                <i data-lucide="phone" class="w-4 h-4"></i>
+                            </div>
+                            <div>
+                                <span class="text-slate-400 text-[10px] font-bold block font-mono">MOBILE PHONE</span>
+                                <a href="tel:+919980613465" class="hover:text-emerald-600 transition-colors font-semibold">+91 99806 13465</a>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center gap-3 text-slate-700 text-xs sm:text-sm">
+                            <div class="w-8 h-8 rounded-xl bg-[#D9CDEB] border border-indigo-200 flex items-center justify-center text-slate-800 shrink-0 shadow-sm">
+                                <i data-lucide="map-pin" class="w-4 h-4"></i>
+                            </div>
+                            <div>
+                                <span class="text-slate-400 text-[10px] font-bold block font-mono">LOCATION</span>
+                                <span class="font-semibold text-slate-800">Bengaluru, Karnataka, India</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Interactive Quick Action Card -->
+                <div class="md:col-span-5 bg-white/90 p-6 rounded-2xl border border-slate-200/80 space-y-4 shadow-sm">
+                    <h3 class="text-base font-bold text-slate-800 flex items-center gap-2">
+                        <i data-lucide="send" class="w-4 h-4 text-rose-400"></i> Quick Contact Action
+                    </h3>
+                    <p class="text-xs text-slate-500 font-medium">Click below to open your preferred mail client or copy details directly.</p>
+
+                    <div class="space-y-2">
+                        <a href="mailto:pratheekshachirael@gmail.com?subject=Inquiry%20regarding%20Pratheeksha%20KR%20Profile" class="w-full flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl bg-[#F6CAD2] hover:bg-rose-200 text-slate-800 border border-rose-300 font-bold text-xs transition-all active:scale-95 shadow-sm">
+                            <i data-lucide="mail-plus" class="w-4 h-4"></i> Send Direct Email
+                        </a>
+                        <button onclick="copyEmail('pratheekshachirael@gmail.com')" class="w-full flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl bg-[#BBE1FA] hover:bg-sky-200 text-slate-800 border border-sky-300 font-bold text-xs transition-all active:scale-95 shadow-sm">
+                            <i data-lucide="copy" class="w-4 h-4 text-slate-700"></i> Copy Personal Email
+                        </button>
+                    </div>
+                    
+                    <div id="toast-message" class="hidden text-center text-xs font-bold text-slate-800 bg-[#CCE3C4] border border-emerald-300 p-2.5 rounded-xl transition-all shadow-sm">
+                        ✓ Email copied to clipboard!
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-slate-200 bg-white/80 py-8 text-center text-xs text-slate-500 relative z-10">
+        <div class="max-w-6xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <p class="font-medium">© 2026 PRATHEEKSHA KR. Built with precision & data passion.</p>
+            <div class="flex items-center gap-4 text-slate-600 font-semibold">
+                <a href="#about" class="hover:text-rose-500 transition-colors">Top</a>
+                <span>•</span>
+                <a href="#skills" class="hover:text-rose-500 transition-colors">Skills</a>
+                <span>•</span>
+                <a href="#education" class="hover:text-rose-500 transition-colors">Education</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript Interactions -->
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // Skill Filtering Logic
+        function filterSkills(category) {
+            const cards = document.querySelectorAll('.skill-card');
+            const buttons = document.querySelectorAll('#skill-filters button');
+
+            // Toggle Active Tab Style
+            buttons.forEach(btn => {
+                btn.classList.remove('bg-[#F6CAD2]', 'text-slate-800', 'border-rose-300', 'active');
+                btn.classList.add('bg-white', 'text-slate-600');
+            });
+            event.currentTarget.classList.remove('bg-white', 'text-slate-600');
+            event.currentTarget.classList.add('bg-[#F6CAD2]', 'text-slate-800', 'border-rose-300', 'active');
+
+            // Filter Skill Cards
+            cards.forEach(card => {
+                if (category === 'all' || card.dataset.category === category) {
+                    card.style.display = 'block';
+                    card.style.opacity = '1';
+                } else {
+                    card.style.display = 'none';
+                    card.style.opacity = '0';
+                }
+            });
+        }
+
+        // Copy Email Toast Helper
+        function copyEmail(emailText) {
+            const tempInput = document.createElement('input');
+            tempInput.value = emailText;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            document.execCommand('copy');
+            document.body.removeChild(tempInput);
+
+            // Toast UI Alert
+            const toast = document.getElementById('toast-message');
+            toast.classList.remove('hidden');
+            setTimeout(() => {
+                toast.classList.add('hidden');
+            }, 3000);
+        }
+    </script>
+</body>
+</html>
